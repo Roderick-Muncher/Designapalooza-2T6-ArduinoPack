@@ -1,3 +1,6 @@
+#ifndef STATIONS_HPP
+#define STATIONS_HPP
+
 #include <DDBot.h>
 
 enum class Station {
@@ -9,3 +12,5 @@ enum class Station {
 };
 
 void runStationA(DDBot& drivetrain);
+
+#endif // STATIONS_HPP
