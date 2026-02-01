@@ -1,37 +1,27 @@
 #include <Arduino.h>
-#include <L298NX2.h>
+#include <DDBot.h>
 #include "constants.hpp"
-#include <Servo.h>
-#include "movements.h"
 
-Servo myServo;
-
-constexpr int SERVO_PIN = 6;
-int pos = 0; // servo pos
-L298NX2 drivetrain(dt::EN_A, dt::IN1_A, dt::IN2_A, dt::EN_B, dt::IN1_B, dt::IN2_B);
+DDBot drivetrain(dt::directionPins, dt::speedPins);
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  Serial.println("Testing (pls work)");
-  myServo.attach(SERVO_PIN);
-  while (!Serial)
-  {
-    //do nothing
-  }
+  while (!Serial && millis() < 2000) {}
 
-  drivetrain.setSpeedA(255);
-  drivetrain.setSpeedB(255);
+  Serial.println("Testing (pls work)");
+  
+  drivetrain.setPinModes();
+  delay(3000);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  drivetrain.runA(L298N::FORWARD);
-  drivetrain.runB(L298N::FORWARD);
-  
-  
-  elevateBox();
-  delay(1000); 
-  lowerBox();
-  delay(1000); 
+  drivetrain.forward(255);
+  delay(6000);
+  drivetrain.stop();
+  delay(100);
+  drivetrain.right(255);
+  delay(2000);
+  drivetrain.stop();
+  delay(10000);
 }

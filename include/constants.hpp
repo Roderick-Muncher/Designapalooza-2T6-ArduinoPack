@@ -1,9 +1,5 @@
 // Drivetrain motor pins
 namespace dt {
-constexpr unsigned int EN_A = 9;
-constexpr unsigned int IN1_A = 2;
-constexpr unsigned int IN2_A = 3;
-constexpr unsigned int EN_B = 10;
-constexpr unsigned int IN1_B = 4;
-constexpr unsigned int IN2_B = 5;
+uint8_t directionPins[4] = {4, 5, 2, 3};
+uint8_t speedPins[2] = {10, 9};
 }
