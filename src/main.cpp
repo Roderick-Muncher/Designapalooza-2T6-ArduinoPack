@@ -1,9 +1,7 @@
 #include <Arduino.h>
-#include <DDBot.h>
-#include "constants.hpp"
+#include "devices.hpp"
 #include "stations.hpp"
 
-DDBot drivetrain(dt::directionPins, dt::speedPins);
 Station currentStation = Station::STATION_A;
 
 void setup() {
