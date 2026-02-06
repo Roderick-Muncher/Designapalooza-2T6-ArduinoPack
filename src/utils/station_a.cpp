@@ -80,5 +80,3 @@ void runStationA() {
   chassis.stop();
   Serial.println("Station A complete");
 }
-
-void runStationB() { Serial.println("Running Station B"); }

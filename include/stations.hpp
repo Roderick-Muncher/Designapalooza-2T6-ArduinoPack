@@ -13,5 +13,7 @@ enum class Station {
 
 void runStationA();
 void runStationB();
+void runStationC();
+void runStationD();
 
 #endif // STATIONS_HPP

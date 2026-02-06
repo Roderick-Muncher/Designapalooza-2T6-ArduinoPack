@@ -14,7 +14,7 @@ void Chassis::moveTank(int leftSpeed, int rightSpeed, int time,
 
   delay(time);
 
-  if (stopAfter) {
+  if (stopAfter && time > 0) {
     drivetrain_.stop();
   }
 }
