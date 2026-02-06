@@ -8,15 +8,13 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   while (!Serial && millis() < 2000) {}
-
-  Serial.println("Testing (pls work)");
   
+  Serial.println("Initializing");
   drivetrain.setPinModes();
   delay(3000);
 
   switch (currentStation) {
     case Station::STATION_A:
-      Serial.println("Running Station A");
       runStationA(drivetrain);
       break;
     default:
