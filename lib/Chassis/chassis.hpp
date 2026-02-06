@@ -15,6 +15,13 @@ struct Chassis {
       : drivetrain_(drivetrain), colorSensor_(sensor) {}
 
   /**
+   * @brief Move the robot using tank controls without direction flipping
+   * @param leftSpeed Speed for the left motor (-255 to 255)
+   * @param rightSpeed Speed for the right motor (-255 to 255)
+   */
+  void moveTank(int leftSpeed, int rightSpeed);
+
+  /**
    * @brief Read the current color detected by the color sensor
    * @return Detected ColorName enum
    */
