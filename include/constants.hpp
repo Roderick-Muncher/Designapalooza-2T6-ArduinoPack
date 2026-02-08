@@ -24,9 +24,4 @@ inline uint8_t ECHO_PIN = 12;
 inline int MAX_DIST_CM = 200;
 }  // namespace sonar
 
-// Arm servo pins
-namespace servo {
-inline uint8_t SERVO_PIN = 6;
-} // namespace servo
-
 #endif  // CONSTANTS_HPP

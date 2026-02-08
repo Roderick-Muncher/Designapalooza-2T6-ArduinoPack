@@ -1,9 +1,7 @@
 #include <Arduino.h>
 
 #include "devices.hpp"
-#include "stations.hpp"
 
-Station currentStation = Station::STATION_A;
 
 void setup() {
   // put your setup code here, to run once:
@@ -14,27 +12,16 @@ void setup() {
   Serial.println("Initializing…");
   drivetrain.setPinModes();
   chassis.stop();
-  arm.raise();
-  delay(2000);
   Serial.println("Initialization complete");
 
-  switch (currentStation) {
-    case Station::STATION_A:
-      runStationA();
-      break;
-    case Station::STATION_B:
-      runStationB();
-      break;
-    case Station::STATION_C:
-      runStationC();
-      break;
-    case Station::STATION_D:
-      runStationD();
-      break;
-    default:
-      Serial.println("No station selected or station not implemented.");
-      break;
-  }
+  drivetrain.forward(255);
+  delay(1000);
+  chassis.stop();
+  // chassis.moveTank(255, 255, 1000);
+  Serial.println("Done");
+
 }
 
-void loop() {}
+void loop() {
+
+}
