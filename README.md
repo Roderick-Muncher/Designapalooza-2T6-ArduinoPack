@@ -4,7 +4,7 @@ A modular robot control system built with Arduino framework.
 
 ## Overview
 
-This project provides a modular Arduino library that simplifies controlling a vehicle. It supports movement as well as detecting obstacles, colors, and lines for versatile navigation.
+This project provides a modular Arduino library that simplifies controlling a vehicle. It supports movement as well as detecting obstacles, lines, and colours for versatile navigation.
 Made for Hi-Skule™ (Designapalooza)
 
 ## Hardware
