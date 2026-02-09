@@ -1,7 +1,6 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 #include <Arduino.h>
-
 #include <cstdint>
 
 // Drivetrain motor pins
