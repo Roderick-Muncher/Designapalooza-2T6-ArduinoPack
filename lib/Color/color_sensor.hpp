@@ -8,7 +8,7 @@
 
 enum class ColorName { RED, GREEN, BLUE, BLACK, BROWN, WHITE, UNKNOWN };
 
-String toString(ColorName color) {
+inline String toString(ColorName color) {
   switch (color) {
     case ColorName::RED:
       return "Red";

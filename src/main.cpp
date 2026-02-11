@@ -22,7 +22,7 @@ void setup() {
 
   // Put your code below:
 
-  chassis.moveTank(255, 255, 1000);
+  // chassis.moveTank(255, 255, 1000);
 
   //
 
