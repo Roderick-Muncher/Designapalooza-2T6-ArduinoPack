@@ -2,9 +2,30 @@
 #define COLOR_SENSOR_HPP
 #include <TCS3200.h>
 
+#include <map>
+
 #include "color_utils.hpp"
 
 enum class ColorName { RED, GREEN, BLUE, BLACK, BROWN, WHITE, UNKNOWN };
+
+String toString(ColorName color) {
+  switch (color) {
+    case ColorName::RED:
+      return "Red";
+    case ColorName::GREEN:
+      return "Green";
+    case ColorName::BLUE:
+      return "Blue";
+    case ColorName::BLACK:
+      return "Black";
+    case ColorName::BROWN:
+      return "Brown";
+    case ColorName::WHITE:
+      return "White";
+    default:
+      return "Unknown";
+  }
+}
 
 class ColorSensor : public TCS3200 {
  public:
