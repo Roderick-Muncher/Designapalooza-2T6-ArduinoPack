@@ -4,7 +4,7 @@
 
 moveTank(): Main movement control: Forward/Backward/Turning for time (T)
 
-readColour(): Reads and returns colour from TCS230 Colour Sensor
+readColor(): Reads and returns color from TCS230 Color Sensor
 
 maxdistance(): Reads distance of nearest obstacle from HCSR04 UltraSonic Sensor
 
@@ -33,20 +33,6 @@ void Chassis::moveTank(int leftSpeed, int rightSpeed, int time,
   }
 }
 
-ColourName Chassis::readColour() {
-  // Get readings
-  ColourRGB colourReading = colourSensor_.readNormalized();
-
-  ColourName colourName = colourSensor_.classify(colourReading);
-
-  // Push to queue
-  bufferedColour = colourName;
-
-  Serial.println((int)bufferedColour);
-
-  return colourName;
-}
-
 int Chassis::readDistance() {
   unsigned long distance =
       ultrasonic_.ping_cm(maxDistCm) * cos(ultrasonicAngle);
@@ -56,26 +42,11 @@ int Chassis::readDistance() {
     distance = maxDistCm;
   }
 
-  // Push to queue
-  distanceReadings_.push(static_cast<int>(distance));
-  if (distanceReadings_.size() > 5) {
-    distanceReadings_.pop();
-  }
+  // // Push to queue
+  // distanceReadings_.push(static_cast<int>(distance));
+  // if (distanceReadings_.size() > 5) {
+  //   distanceReadings_.pop();
+  // }
 
   return static_cast<int>(distance);
-}
-
-void Chassis::followLine(ColourName lineColour, bool followLeft,
-                         std::pair<int, int> speeds, bool reverse) {
-  auto [inSpeed, outSpeed] = speeds;
-  int dir = reverse ? -1 : 1;
-
-  bool onLine = (readColour() == lineColour);
-
-  // If following left side move left if on the line, right if off the line
-  // Vice-versa for following right
-  // Reversing uses backward instead and flips motor order
-  int leftSpeed = dir * (followLeft == onLine == reverse ? outSpeed : inSpeed);
-  int rightSpeed = dir * (followLeft == onLine == reverse ? inSpeed : outSpeed);
-  this->moveTank(leftSpeed, rightSpeed);
 }

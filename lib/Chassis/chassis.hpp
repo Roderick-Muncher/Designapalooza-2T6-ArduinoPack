@@ -1,8 +1,8 @@
 #ifndef CHASSIS_HPP
 #define CHASSIS_HPP
-#include <ColourSensor.h>
 #include <DDBot.h>
 #include <NewPing.h>
+#include <color_sensor.hpp>
 
 #include <cmath>
 #include <queue>
@@ -17,10 +17,9 @@ class Chassis {
    * @param sensor Reference to the ColourSensor instance
    * @param ultrasonic Reference to the NewPing ultrasonic sensor instance
    */
-
-  Chassis(DDBot& drivetrain, ColourSensor& sensor, NewPing& ultrasonic)
+  Chassis(DDBot& drivetrain, ColorSensor& sensor, NewPing& ultrasonic)
       : drivetrain_(drivetrain),
-        colourSensor_(sensor),
+        colorSensor_(sensor),
         ultrasonic_(ultrasonic) {}
 
   /**
@@ -41,45 +40,16 @@ class Chassis {
   void stop() { drivetrain_.stop(); }
 
   /**
-   * @brief Read the current colour detected by the colour sensor
-   * @return Detected ColourName enum
-   */
-
-  ColourName readColour();
-
-  /**
    * @brief Read the current distance measured by the ultrasonic sensor
    * @return Distance in centimeters
    */
 
   int readDistance();
 
-  /**
-   * @brief Follow a line of the specified colour using a single colour sensor by
-   * weaving along an edge.
-   * @param lineColour Colour of the line to follow
-   * @param followLeft If true, follow the line's left side (in the direction of
-   * travel); if false, follow the right side
-   * @param speeds Pair of speeds (inSpeed, outSpeed) in range [0, 255]
-   * @param reverse If true, move backwards while following the line
-   * @note This method must be called repeatedly with a delay in between
-   */
-  
-  void followLine(ColourName lineColour, bool followLeft,
-                  std::pair<int, int> speeds = {170, 255},
-                  bool reverse = false);
-
-  std::queue<int> getDistanceReadings() const { return distanceReadings_; }
-  ColourName getBufferedColour() const { return bufferedColour; }
-
  protected:
   DDBot& drivetrain_;
-  ColourSensor& colourSensor_;
+  ColorSensor& colorSensor_;
   NewPing& ultrasonic_;
-
-  std::queue<int> distanceReadings_;
-
-  ColourName bufferedColour = ColourName::UNKNOWN;
 
   const int maxDistCm = 30;
   const double ultrasonicAngle = 20.0 * (M_PI / 180.0);  // deg converted to rad
