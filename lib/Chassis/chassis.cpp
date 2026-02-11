@@ -13,22 +13,30 @@ followLine(): Line-following program (May not be provided to students)
 */
 
 void Chassis::moveTank(int leftSpeed, int rightSpeed, int time,
-                       bool stopAfter) {
+                       bool stopAfter)
+{
 
   // Set movement direction - converting speed to DDBOT commands
-  if (leftSpeed >= 0 && rightSpeed >= 0) {
-    this->forward(leftSpeed, rightSpeed);
-  } else if (leftSpeed < 0 && rightSpeed < 0) {
-    this->backward(-leftSpeed, -rightSpeed);
-  } else if (leftSpeed >= 0 && rightSpeed < 0) {
-    this->right(leftSpeed, -rightSpeed);
-  } else {
-    this->left(-leftSpeed, rightSpeed);
-  }
+  // if (leftSpeed >= 0 && rightSpeed >= 0) {
+  //   this->forward(leftSpeed, rightSpeed);
+  // } else if (leftSpeed < 0 && rightSpeed < 0) {
+  //   this->backward(-leftSpeed, -rightSpeed);
+  // } else if (leftSpeed >= 0 && rightSpeed < 0) {
+  //   this->right(leftSpeed, -rightSpeed);
+  // } else {
+  //   this->left(-leftSpeed, rightSpeed);
+  // }
+  bool leftForwards = leftSpeed >= 0;
+  bool rightForwards = rightSpeed >= 0;
+
+  this->writeDirections(
+    leftForwards, !leftForwards, rightForwards, !rightForwards,
+    abs(leftSpeed), abs(rightSpeed));
 
   // Stop after certain amount of time
   delay(time);
-  if (stopAfter && time > 0) {
+  if (stopAfter && time > 0)
+  {
     this->stop();
   }
 }

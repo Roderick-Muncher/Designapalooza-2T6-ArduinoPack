@@ -7,8 +7,8 @@
 
 // Drivetrain motor pins
 namespace drive {
-inline uint8_t DIRECTION_PINS[4] = {2, 3, 4, 5};
-inline uint8_t SPEED_PINS[2] = {9, 10};
+inline uint8_t DIRECTION_PINS[4] = {2, 3, 5, 4};
+inline uint8_t SPEED_PINS[2] = {10, 9};
 }  // namespace drive
 
 // Color sensor pins
@@ -22,7 +22,7 @@ inline uint8_t OUT_PIN = 8;
 namespace sonar {
 inline uint8_t TRIGGER_PIN = 12;
 inline uint8_t ECHO_PIN = 11;
-inline int MAX_DIST_CM = 200;
+inline int MAX_DIST_CM = 40;
 }  // namespace sonar
 
 #endif  // CONSTANTS_HPP

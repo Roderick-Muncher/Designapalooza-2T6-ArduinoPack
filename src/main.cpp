@@ -23,17 +23,22 @@ void setup() {
 
   // Put your code below:
   chassis.moveTank(50, 50, 0, false);
-
+  
   // Wait until near target
-  while (ultrasonic.ping_cm() > 25) {
-    delay(100);
+  Serial.println("Distance: " + String(ultrasonic.ping_cm()));
+  while (!ultrasonic.ping_cm() || ultrasonic.ping_cm() > 25) {
+    Serial.println("Distance: " + String(ultrasonic.ping_cm()));
+    delay(30);
   }
-
-  chassis.moveTank(-50, 50, 400);
-  chassis.moveTank(50, 50, 500, true);
-  chassis.moveTank(50, 0, 500);
-  chassis.moveTank(50, 50, 2000, true);
-
+  chassis.stop();
+  delay(500);
+  
+  chassis.moveTank(-40, 40, 600);
+  delay(500);
+  chassis.stop();
+  delay(500);
+  chassis.moveTank(50, 50, 1000, true);
+  delay(500);
 
   Serial.println("Done");
 }
